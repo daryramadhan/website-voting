@@ -8,7 +8,9 @@
         Terima kasih, anda telah berpartisipasi dalam <br>
         pemilihan Ketua OSIS 2024/2025
         </h2>
-        <button class="border border-gray-200 py-2 px-4 rounded-full text-gray-300 hover:text-gray-400">Kembali ke homepage</button>
+
+        <a href="{{route('logout')}}" class="border border-gray-200 py-2 px-4 rounded-full text-gray-300 hover:text-gray-400">Kembali ke homepage</a>
+
         <p class="text-sm text-gray-500">Otomatis kembali dalam 10 detik</p>
     </div>
 </div>
