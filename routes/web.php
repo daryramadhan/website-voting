@@ -25,6 +25,8 @@ Route::get('/', function () {
 // 
 Route::post('/login', [LoginController::class, 'login_aksi'])->name('login');
 
+Route::post('/api/vote', [Validation::class, 'sendVote'])->name('vote');
+
 Route::get('/logout', [LoginController::class, 'logout_aksi'])->name('logout');
 // Route::get('/choose', [Validation::class, 'choose'])->name('choose');
 Route::get('/result', [Validation::class, 'result'])->name('result');
@@ -36,7 +38,7 @@ Route::get('/choose-new', [Validation::class, 'choose'])->name('choose');
 
 Route::get('/thanks', function() {
     return view('thanks');
-});
+})->name('thanks');
 
 Route::get('/loginVote', function() {
     return view('loginVote');

@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('candidate', function (Blueprint $table) {
-            $table->string('nis')->primary();
-            $table->string('img');
-            $table->string('description');
-            $table->string('vote_count');
+        Schema::create('user_votes', function (Blueprint $table) {
+            $table->id();
+            $table->string('nis_vote');
+            $table->string('vote_number');
             $table->timestamps();
         });
     }
@@ -26,7 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
-        Schema::dropIfExists('candidate');
+        Schema::dropIfExists('user_votes');
     }
 };
