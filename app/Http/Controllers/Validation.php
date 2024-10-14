@@ -12,7 +12,7 @@ class Validation extends Controller
         // if (!Auth::check()) {
         //     return redirect()->route('index');
         // }
-        return view('choose');
+        return view('choose-new');
         
     }
 
