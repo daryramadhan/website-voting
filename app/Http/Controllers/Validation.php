@@ -9,17 +9,22 @@ class Validation extends Controller
 {
     //
     public function choose(){
-        if (!Auth::check()) {
-            return redirect()->route('index');
-        }
+        // if (!Auth::check()) {
+        //     return redirect()->route('index');
+        // }
         return view('choose');
         
     }
 
     public function result(){
-        if (!Auth::check() || auth()->user()->role == 'siswa') {
-            return redirect()->route('index');
-        }
+        // if (!Auth::check() || auth()->user()->role == 'siswa') {
+        //     return redirect()->route('index');
+        // }
         return view('result');
     }
+
+    // public function sendVote(Request request){
+    //     $choices=request->all();
+    //     print_r(choices);
+    // }
 }

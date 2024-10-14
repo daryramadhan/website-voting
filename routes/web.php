@@ -37,3 +37,7 @@ Route::get('/thanks', function() {
     return view('thanks');
 });
 
+Route::get('/loginVote', function() {
+    return view('loginVote');
+});
+
