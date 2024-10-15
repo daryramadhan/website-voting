@@ -20,8 +20,11 @@
 
                         <!-- Card 1 -->
                         <div class="flex flex-col border border-gray-200 rounded-lg basis-1/3">
-                            <div class="py-2 text-center">
+                        <div class="flex flex-row justify-between p-2 text-center">
                                 <h4 class="text-4xl font-bold">01</h4>
+                                <div class="">
+                                     <button type="submit" class="flex w-full justify-center text-white rounded-md bg-gray-800 px-4 py-2 text-sm font-medium hover:bg-gray-500" onclick="confirmFollow2()">Pilih Nayla (No.Urut 1)</button>
+                                </div>
                             </div> 
 
                             <!-- img -->
@@ -61,11 +64,6 @@
                                         <li>Merangkul semua siswa untuk mencapai tujuan bersama</li>
                                     </ul>
                                 </div>
-                            </div>
-
-                            <!-- Button -->
-                            <div class="p-4">
-                                <button type="submit" class="flex w-full justify-center text-white rounded-md bg-gray-800 px-4 py-2 text-sm font-medium hover:bg-gray-500" onclick="confirmFollow1()">Pilih Nayla (No.Urut 1)</button>
                             </div>
                         </div>
 
@@ -114,8 +112,11 @@
 
                         <!-- Card 3 -->
                         <div class="flex flex-col border border-gray-200 rounded-lg basis-1/3">
-                            <div class="py-2 text-center">
+                        <div class="flex flex-row justify-between p-2 text-center">
                                 <h4 class="text-4xl font-bold">03</h4>
+                                <div class="">
+                                     <button type="submit" class="flex w-full justify-center text-white rounded-md bg-gray-800 px-4 py-2 text-sm font-medium hover:bg-gray-500" onclick="confirmFollow2()">Pilih Mikaela (No.Urut 3)</button>
+                                </div>
                             </div> 
 
                             <!-- img -->
@@ -125,11 +126,6 @@
 
                             <!-- Content -->
                             <div class="flex flex-col p-4 rounded-lg flex-grow">
-
-                                <!-- Button -->
-                                <div class="">
-                                    <button type="submit" class="flex w-full justify-center text-white rounded-md bg-gray-800 px-4 py-2 mb-2 text-sm font-medium hover:bg-gray-500" onclick="confirmFollow3()">Pilih Mikaela (No.Urut 3)</button>
-                                </div>
 
                                 <!-- Name -->
                                 <h2 class="text-lg font-medium">
@@ -198,7 +194,7 @@
                 // Candidate 2
                 function confirmFollow2() {
                     Swal.fire({
-                        title: "Apakah kamu yakin memilih Sabrina Salsa",
+                        title: "Apakah kamu yakin memilih M. Qoirul Ulum",
                         text: "sebagai ketua osis SMPN 22 Malang Masa Bhakti 2024/2025?",
                         icon: "warning",
                         showCancelButton: true,
