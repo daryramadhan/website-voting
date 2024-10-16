@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Validation;
+use App\Http\Controllers\VoteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,9 @@ Route::get('/logout', [LoginController::class, 'logout_aksi'])->name('logout');
 Route::get('/result', [Validation::class, 'result'])->name('result');
 Route::get('/choose-new', [Validation::class, 'choose'])->name('choose');
 
+// Sending vote number result
+Route::get('/result', [VoteController::class, 'index']);
+
 // Route::get('/login', function() {
 //     return view('login');
 // });
@@ -44,9 +48,11 @@ Route::get('/loginVote', function() {
     return view('loginVote');
 });
 
-Route::get('/result', function() {
-    return view('result');
-});
+// Route::get('/result', function() {
+//     return view('result');
+// });
+
+
 
 // Route::get('/choose-new', function() {
 //     return view('choose-new');

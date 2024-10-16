@@ -219,7 +219,7 @@
                         confirmButtonText: "Yakin!"
                         }).then( async (result) => {
                         if (result.isConfirmed) {
-                            await fetch('{{ route('vote') }}', { method: "POST", body: JSON.stringify({ "nis": "{{ \Illuminate\Support\Facades\Auth::user()->nis }}", "candidate_id": 1 , "_token": "{{ csrf_token() }}" }), headers: { "Content-Type": "application/json" } });
+                            await fetch('{{ route('vote') }}', { method: "POST", body: JSON.stringify({ "nis": "{{ \Illuminate\Support\Facades\Auth::user()->nis }}", "candidate_id": 3 , "_token": "{{ csrf_token() }}" }), headers: { "Content-Type": "application/json" } });
 
                             window.location = "{{ route('thanks') }}";
                         }

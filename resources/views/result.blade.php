@@ -40,6 +40,8 @@
                         </div>
 
                         <div class="border border-gray-200 rounded-lg">
+                            
+                            <!-- Bar Chart -->
                             <div class="pt-6 px-2 pb-0">
                                 <div id="bar-chart">
                                 </div>
@@ -85,89 +87,105 @@
     
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
-    const chartConfig = {
-    series: [
-        {
-        name: "Hasil Voting",
-        data: [50, 40, 300],
-        },
-    ],
-    chart: {
-        type: "bar",
-        height: 240,
-        toolbar: {
-        show: true,
-        },
-    },
-    title: {
-        show: "",
-    },
-    dataLabels: {
-        enabled: true,
-    },
-    colors: ["#020617"],
-    plotOptions: {
-        bar: {
-        columnWidth: "60%",
-        borderRadius: 2,
-        },
-    },
-    xaxis: {
-        axisTicks: {
-        show: false,
-        },
-        axisBorder: {
-        show: false,
-        },
-        labels: {
-        style: {
-            colors: "#616161",
-            fontSize: "12px",
-            fontFamily: "inherit",
-            fontWeight: 400,
-        },
-        },
-        categories: [
-        "Nayla Qur'ainy Regitha Amalia",
-        "M. Qoirul Ulum",
-        "Mikaela Angely Wilson",
+
+        var voteData = @json($voteCounts);
+
+        // var voteNumbers = voteData.map(function(vote) {
+        //     return 'Candidate ' + vote.vote_number; // Map vote_number to candidate names or IDs
+        // });
+
+        // var data = voteData.map(function(vote) {
+        //     return vote.total;
+        // });
+
+        var totalVotes = voteData.map(function(vote) {
+            return vote.total; // Map total votes per candidate
+        });
+        
+        const chartConfig = {
+        series: [
+            {
+            name: "Hasil Voting",
+            // data: [50, 40, 100],
+            data: totalVotes,
+            },
         ],
-    },
-    yaxis: {
-        labels: {
-        style: {
-            colors: "#616161",
-            fontSize: "12px",
-            fontFamily: "inherit",
-            fontWeight: 400,
+        chart: {
+            type: "bar",
+            height: 390,
+            toolbar: {
+            show: false,
+            },
         },
+        title: {
+            show: "",
         },
-    },
-    grid: {
-        show: true,
-        borderColor: "#dddddd",
-        strokeDashArray: 5,
+        dataLabels: {
+            enabled: true,
+        },
+        colors: ["#020617"],
+        plotOptions: {
+            bar: {
+            columnWidth: "60%",
+            borderRadius: 2,
+            },
+        },
         xaxis: {
-        lines: {
+            axisTicks: {
+            show: false,
+            },
+            axisBorder: {
+            show: false,
+            },
+            labels: {
+            style: {
+                colors: "#616161",
+                fontSize: "12px",
+                fontFamily: "inherit",
+                fontWeight: 400,
+            },
+            },
+            categories: [
+            "Nayla Qur'ainy Regitha Amalia",
+            "M. Qoirul Ulum",
+            "Mikaela Angely Wilson",
+            ],
+        },
+        yaxis: {
+            labels: {
+            style: {
+                colors: "#616161",
+                fontSize: "12px",
+                fontFamily: "inherit",
+                fontWeight: 400,
+            },
+            },
+        },
+        grid: {
             show: true,
+            borderColor: "#dddddd",
+            strokeDashArray: 5,
+            xaxis: {
+            lines: {
+                show: true,
+            },
+            },
+            padding: {
+            top: 5,
+            right: 5,
+            },
         },
+        fill: {
+            opacity: 0.8,
         },
-        padding: {
-        top: 5,
-        right: 20,
+        tooltip: {
+            theme: "dark",
         },
-    },
-    fill: {
-        opacity: 0.8,
-    },
-    tooltip: {
-        theme: "dark",
-    },
-    };
-    
-    const chart = new ApexCharts(document.querySelector("#bar-chart"), chartConfig);
-    
-    chart.render();
+        };
+        
+        const chart = new ApexCharts(document.querySelector("#bar-chart"), chartConfig);
+        
+        chart.render();
     </script>
 </div>
 @endsection
