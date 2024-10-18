@@ -27,8 +27,11 @@ class VoteController extends Controller
         // $userCount = User::where('role', 'siswa')->count();
         $userCount = User::count();
 
+        //Total Percentage
+        $overallPercentage = $userCount > 0 ? ($alreadyVote / $userCount) * 100 : 0;
+
         // Pass both counts to the Blade view
-        return view('result', compact('voteCounts', 'userCount', 'alreadyVote'));
+        return view('result', compact('voteCounts', 'userCount', 'alreadyVote', 'overallPercentage'));
     }
 
 }

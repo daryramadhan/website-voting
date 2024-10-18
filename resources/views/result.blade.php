@@ -22,7 +22,7 @@
                                 <h4 class="text-sm">
                                 Progress Pemilihan
                                 </h4>
-                                <p class="text-right text-xl"> {{ $userCount }} </p>
+                                <p class="text-right text-xl"> {{ number_format($overallPercentage, 2) }}% </p>
                             </div>
                             <div class="flex flex-col border border-gray-200 rounded-lg p-3 w-full">
                                 <h4 class="text-sm">
