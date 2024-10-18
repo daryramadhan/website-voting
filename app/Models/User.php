@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'role',
         'password',
+        'password_row',
         'voted_at',
     ];
 

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('role');
             $table->string('password');
+            $table->string('password_row');
             $table->timestamp('voted_at')->nullable();
             $table->timestamps();
         });

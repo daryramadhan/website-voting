@@ -22,19 +22,24 @@
                                 <h4 class="text-sm">
                                 Progress Pemilihan
                                 </h4>
-                                <p class="text-right text-xl">90%</p>
+                                <p class="text-right text-xl"> {{ $userCount }} </p>
                             </div>
                             <div class="flex flex-col border border-gray-200 rounded-lg p-3 w-full">
                                 <h4 class="text-sm">
                                 Jumlah telah memilih,
                                 </h4>
-                                <p class="text-right text-xl">234/700</p>
+                                <p class="text-right text-xl">{{ $alreadyVote }}/ {{ $userCount }} </p>
                             </div>
                             <div class="flex flex-col border border-gray-200 rounded-lg p-3 w-full">
                                 <h4 class="text-sm">
                                 Tanggal
                                 </h4>
-                                <p class="text-right text-xl">14:28, Rabu 3 November</p>
+
+                                @php
+                                    // Get the current time using Carbon
+                                    $currentTime = \Carbon\Carbon::now()->format('H:i, l j F');
+                                @endphp
+                                <p class="text-right text-xl">{{ $currentTime }}</p>
                             </div>
                             
                         </div>

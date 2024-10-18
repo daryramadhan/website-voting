@@ -24,17 +24,21 @@ Route::get('/', function () {
 //     return view('login');
 // });
 // 
+
+//Authentication
 Route::post('/login', [LoginController::class, 'login_aksi'])->name('login');
+Route::get('/logout', [LoginController::class, 'logout_aksi'])->name('logout');
 
 Route::post('/api/vote', [Validation::class, 'sendVote'])->name('vote');
 
-Route::get('/logout', [LoginController::class, 'logout_aksi'])->name('logout');
 // Route::get('/choose', [Validation::class, 'choose'])->name('choose');
 Route::get('/result', [Validation::class, 'result'])->name('result');
 Route::get('/choose-new', [Validation::class, 'choose'])->name('choose');
 
 // Sending vote number result
-Route::get('/result', [VoteController::class, 'index']);
+Route::get('/result', [VoteController::class, 'index'])->name('result');
+// Route::get('api/result', [VoteController::class, 'countUsers'])->name('progress');
+
 
 // Route::get('/login', function() {
 //     return view('login');
