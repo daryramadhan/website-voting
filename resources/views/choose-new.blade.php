@@ -13,7 +13,9 @@
                         Surat Suara Pemilihan Ketua OSIS 2024/2025
                         </h3>
 
-                        <a href="{{route('logout')}}" class="text-gray-400 text-sm font-light">Keluar</a>
+                        <h3 class="text-sm font-medium text-center">
+                        Hi, {{ Auth::user()->name }}!
+                        </h3>
                     </div>
 
                     <div class="flex flex-row gap-x-2">
@@ -164,6 +166,11 @@
                        
                     </div>                   
                 </div>
+
+                <div class="text-end">
+                    <a href="{{route('logout')}}" class="text-gray-400 text-sm font-light">Keluar</a>
+                </div>
+               
             </div>
         </div>
 

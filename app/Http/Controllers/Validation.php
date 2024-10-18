@@ -10,17 +10,17 @@ class Validation extends Controller
 {
     //
     public function choose(){
-        // if (!Auth::check()) {
-        //     return redirect()->route('index');
-        // }
+        if (!Auth::check()) {
+            return redirect()->route('index');
+        }
         return view('choose-new');
         
     }
 
     public function result(){
-        // if (!Auth::check() || auth()->user()->role == 'siswa') {
-        //     return redirect()->route('index');
-        // }
+        if (!Auth::check() || auth()->user()->role == 'student') {
+            return redirect()->route('index');
+        }
         return view('result');
     }
 

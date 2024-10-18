@@ -20,12 +20,12 @@ class VoteController extends Controller
         // Data yang telah memilih
         $alreadyVote = DB::table('users')
             ->join('user_votes', 'users.nis', '=', 'user_votes.nis_vote')
-            // ->where('users.role', 'siswa')
+            ->where('users.role', 'student')
             ->count();
 
         // Menghitung siswa yang dapat melakukan pemilihan
-        // $userCount = User::where('role', 'siswa')->count();
-        $userCount = User::count();
+        $userCount = User::where('role', 'student')->count();
+        // $userCount = User::count();
 
         //Total Percentage
         $overallPercentage = $userCount > 0 ? ($alreadyVote / $userCount) * 100 : 0;
