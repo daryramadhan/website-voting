@@ -14,6 +14,23 @@
                  @csrf
                     <div class="space-y-2">
                         <div>
+                            <!-- @if ($errors->has('email'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif -->
+                            
+                            @if (session('status'))
+                                <script>
+                                        Swal.fire({
+                                        icon: "error",
+                                        title: "Oops...",
+                                        text: "{{ session('status') }}",
+                                        footer: '<a href="#">Why do I have this issue?</a>'
+                                    });
+                                </script> 
+                            @endif
+                            
 
                             <label for="nis" class="block mb-2 text-sm font-base text-gray-900">Nomor Induk Siswa</label>
                             <input type="number" name="nis" id="nis" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 px-4" placeholder="Masukkan NIS" required />

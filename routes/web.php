@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Validation;
 use App\Http\Controllers\VoteController;
+use Illuminate\Support\Facades\Auth;
+use Session;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +48,11 @@ Route::get('/result', [VoteController::class, 'index'])->name('result');
 // });
 
 Route::get('/thanks', function() {
+    $query = User::where('id', auth()->user()->id)->update(['password' => NULL]);
+    
+    Session::flush();
+    Auth::logout();
+
     return view('thanks');
 })->name('thanks');
 
