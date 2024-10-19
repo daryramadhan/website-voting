@@ -26,18 +26,20 @@
                             </div>
                             <div class="flex flex-col border border-gray-200 rounded-lg p-3 w-full">
                                 <h4 class="text-sm">
-                                Jumlah telah memilih,
+                                Jumlah Telah Memilih
                                 </h4>
                                 <p class="text-right text-xl">{{ $alreadyVote }}/ {{ $userCount }} </p>
                             </div>
                             <div class="flex flex-col border border-gray-200 rounded-lg p-3 w-full">
                                 <h4 class="text-sm">
-                                Tanggal
+                                Waktu Terakhir Diperbarui 
                                 </h4>
 
                                 @php
                                     // Get the current time using Carbon
-                                    $currentTime = \Carbon\Carbon::now()->format('H:i, l j F');
+
+                                    $currentTime = \Carbon\Carbon::now()->format('d/m/Y, H:i:s');
+
                                 @endphp
                                 <p class="text-right text-xl">{{ $currentTime }}</p>
                             </div>

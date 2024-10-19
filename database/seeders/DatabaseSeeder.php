@@ -20,14 +20,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'admin',
                 'role' => 'admin',
                 'password' => bcrypt('12345678'),
-                'password_row' => '123456778'
-            ],
-            [
-                'nis' => '12387',
-                'name' => 'ACHMAD FAUZY FERDIANSYAH',
-                'role' => 'student',
-                'password' => bcrypt('312186'),
-                'password_row' => '312186'
+                'password_row' => '12345678'
             ],
         );
         

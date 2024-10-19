@@ -29,26 +29,30 @@ class LoginController extends Controller
             'password' => $data['token']
         ];
 
+        // Jika NIS tidak ditemukan
         $query = User::where('nis', $data['nis'])->first();
         if (!$query)
         {
             return redirect('/')->with('status', 'Akun anda tidak terdaftar!');
         }
+
+        // Cek apakah user sudah memilih sebelumnya
         if ($query['password'] == NULL)
         {
-            // return response()->json(['success' => false, 'message' => 'Username atau password salah'], 500);
-
             return redirect('/')->with('status', 'Anda tidak dapat melakukan pemilihan 2 kali!');
         }
 
-        // Cek aktif tidaknya
-        // echo var_dump($query);
-        // exit;
+        // Cek autentikasi dengan credential NIS dan token (password)
         if(Auth::attempt($cred)){
-            // return response()->json(['success' => true, 'message' => 'success'], 200);
-            return redirect()->route('choose');
+             // Jika autentikasi berhasil, periksa role pengguna
+             if ($query-> role == 'admin')
+             {
+                return redirect()->route('result');
+             } else {
+                return redirect()->route('choose');
+             }
         }else{
-            // return response()->json(['success' => false, 'message' => 'Username atau password salah'], 500);
+            // Jika autentikasi gagal
             return redirect('/')->with('status', 'Token anda tidak valid!');
         }
     }

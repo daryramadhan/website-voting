@@ -26,6 +26,7 @@ class UpdatePassword extends Seeder
             DB::table('users')->where('nis', $student->nis)->update([
                 'password' => $hashedPassword,
             ]);
+            
         }
     }
 }
