@@ -95,7 +95,7 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
 
-        var voteData = @json($voteCounts);
+        var voteData = @json($results);
 
         // var voteNumbers = voteData.map(function(vote) {
         //     return 'Candidate ' + vote.vote_number; // Map vote_number to candidate names or IDs
@@ -152,11 +152,9 @@
                 fontWeight: 400,
             },
             },
-            categories: [
-            "Nayla Qur'ainy Regitha Amalia",
-            "M. Qoirul Ulum",
-            "Mikaela Angely Wilson",
-            ],
+            categories: voteData.map(function(vote) {
+                return vote.name; // Nama kandidat diurutkan sesuai total suaranya
+            }),
         },
         yaxis: {
             labels: {

@@ -13,11 +13,34 @@ class VoteController extends Controller
     public function index()
     {
         // Mengambil jumlah vote berdasarkan vote_number
-        $voteCounts = DB::table('user_votes')
-            ->select('vote_number', DB::raw('count(*) as total'))
+        // $voteCounts = UserVote::select('vote_number', DB::raw('count(*) as total'))
+        //                     ->groupBy('vote_number')
+        //                     ->get();
+
+        // $voteCounts = DB::table('user_votes')
+        //     ->select('vote_number', DB::raw('count(*) as total'))
+        //     ->groupBy('vote_number')// or 'asc' for ascending order
+        //     ->get();
+
+        //New Logic Vote
+        $candidates = [
+            ['name' => 'Nayla Qur\'ainy Regitha Amalia', 'vote_number' => 1],
+            ['name' => 'M. Qoirul Ulum', 'vote_number' => 2],
+            ['name' => 'Mikaela Angely Wilson', 'vote_number' => 3],
+        ];
+
+        $voteCounts = UserVote::select('vote_number', DB::raw('count(*) as total'))
             ->groupBy('vote_number')
-            ->orderBy('total', 'asc') // or 'asc' for ascending order
-            ->get();
+            ->get()
+            ->keyBy('vote_number');
+
+        // Gabungkan hasil voting dengan kandidat yang sesuai
+        $results = array_map(function($candidate) use ($voteCounts) {
+            return [
+                'name' => $candidate['name'], 
+                'total' => $voteCounts->get($candidate['vote_number'])->total ?? 0 // Default 0 jika tidak ada suara
+            ];
+        }, $candidates);
 
         // Data yang telah memilih
         $alreadyVote = DB::table('users')
@@ -33,7 +56,7 @@ class VoteController extends Controller
         $overallPercentage = $userCount > 0 ? ($alreadyVote / $userCount) * 100 : 0;
 
         // Pass both counts to the Blade view
-        return view('result', compact('voteCounts', 'userCount', 'alreadyVote', 'overallPercentage'));
+        return view('result', compact('results', 'userCount', 'alreadyVote', 'overallPercentage'));
     }
 
 }
