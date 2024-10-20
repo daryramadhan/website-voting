@@ -31,7 +31,7 @@
 
                             <!-- img -->
                             <div class="h-72"> <!-- Set a fixed height for the image container -->
-                                <img class="w-full h-full object-cover" src="img/nayla.JPG" alt="profile-picture" />
+                                <img class="w-full h-full object-cover" src="img/nayla.png" alt="profile-picture" />
                             </div>   
 
                             <!-- Content -->
@@ -80,7 +80,7 @@
 
                             <!-- img -->
                             <div class="h-72"> <!-- Set a fixed height for the image container -->
-                                <img class="w-full h-full object-cover" src="img/qoirul.JPG" alt="profile-picture" />
+                                <img class="w-full h-full object-cover" src="img/qoirul.png" alt="profile-picture" />
                             </div>   
 
                             <!-- Content -->
@@ -123,7 +123,7 @@
 
                             <!-- img -->
                             <div class="h-72"> <!-- Set a fixed height for the image container -->
-                                <img class="w-full h-full object-cover" src="img/mikaela.JPG" alt="profile-picture" />
+                                <img class="w-full h-full object-cover" src="img/mikaela.png" alt="profile-picture" />
                             </div>   
 
                             <!-- Content -->
