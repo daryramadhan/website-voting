@@ -13,9 +13,11 @@ class VoteController extends Controller
     public function index()
     {
         // Mengambil jumlah vote berdasarkan vote_number
-        $voteCounts = UserVote::select('vote_number', DB::raw('count(*) as total'))
-                            ->groupBy('vote_number')
-                            ->get();
+        $voteCounts = DB::table('user_votes')
+            ->select('vote_number', DB::raw('count(*) as total'))
+            ->groupBy('vote_number')
+            ->orderBy('total', 'asc') // or 'asc' for ascending order
+            ->get();
 
         // Data yang telah memilih
         $alreadyVote = DB::table('users')
