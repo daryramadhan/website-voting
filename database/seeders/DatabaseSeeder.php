@@ -16,11 +16,11 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User::create(
             [
-                'nis' => '42986',
+                'nis' => '11111',
                 'name' => 'admin',
                 'role' => 'admin',
-                'password' => bcrypt('12345678'),
-                'password_row' => '12345678'
+                'password' => bcrypt('238746235'),
+                'password_row' => '238746235'
             ],
         );
         
