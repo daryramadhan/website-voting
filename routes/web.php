@@ -59,14 +59,3 @@ Route::get('/thanks', function() {
 Route::get('/loginVote', function() {
     return view('loginVote');
 });
-
-// Route::get('/result', function() {
-//     return view('result');
-// });
-
-
-
-// Route::get('/choose-new', function() {
-//     return view('choose-new');
-// });
-

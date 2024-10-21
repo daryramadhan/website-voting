@@ -30,6 +30,16 @@
         window.addEventListener('popstate', function(event) {
                 window.location.href = '{{ url()->current() }}'; // Mendapatkan URL halaman saat ini
             });
+
+        //Set Interval Page Expired
+        setInterval(function() {
+            fetch('/refresh-csrf')
+                .then(response => response.text())
+                .then(token => {
+                    document.querySelector('meta[name="csrf-token"]').setAttribute('content', token);
+                    document.querySelector('input[name="_token"]').value = token;
+                });
+        }, 300000); // Refresh token every 10 minutes (600,000 ms)
     </script>
 </body>
 </html>
