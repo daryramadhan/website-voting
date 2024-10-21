@@ -59,3 +59,9 @@ Route::get('/thanks', function() {
 Route::get('/loginVote', function() {
     return view('loginVote');
 });
+
+
+// CSRF Token Auto-refresh
+Route::get('/refresh-csrf', function () {
+    return csrf_token();
+});
