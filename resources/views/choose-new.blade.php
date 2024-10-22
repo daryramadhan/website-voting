@@ -13,20 +13,25 @@
                         Surat Suara Pemilihan Ketua OSIS 2024/2025
                         </h3>
 
-                        <a href="{{route('logout')}}" class="text-gray-400 text-sm font-light">Keluar</a>
+                        <h3 class="text-sm font-medium text-center">
+                        Hi, {{ Auth::user()->name }}!
+                        </h3>
                     </div>
 
                     <div class="flex flex-row gap-x-2">
 
                         <!-- Card 1 -->
                         <div class="flex flex-col border border-gray-200 rounded-lg basis-1/3">
-                            <div class="py-2 text-center">
+                            <div class="flex flex-row justify-between p-2 text-center">
                                 <h4 class="text-4xl font-bold">01</h4>
+                                <div class="">
+                                     <button type="submit" class="flex w-full justify-center text-white rounded-md bg-blue-800 px-4 py-2 text-sm font-medium hover:bg-blue-500" onclick="confirmFollow1()">Pilih Nayla (No.Urut 1)</button>
+                                </div>
                             </div> 
 
                             <!-- img -->
                             <div class="h-72"> <!-- Set a fixed height for the image container -->
-                                <img class="w-full h-full object-cover" src="img/nayla.JPG" alt="profile-picture" />
+                                <img class="w-full h-full object-cover" src="img/nayla.png" alt="profile-picture" />
                             </div>   
 
                             <!-- Content -->
@@ -62,11 +67,6 @@
                                     </ul>
                                 </div>
                             </div>
-
-                            <!-- Button -->
-                            <div class="p-4">
-                                <button type="submit" class="flex w-full justify-center text-white rounded-md bg-gray-800 px-4 py-2 text-sm font-medium hover:bg-gray-500" onclick="confirmFollow1()">Pilih Nayla (No.Urut 1)</button>
-                            </div>
                         </div>
 
                         <!-- Card 2 -->
@@ -74,13 +74,13 @@
                             <div class="flex flex-row justify-between p-2 text-center">
                                 <h4 class="text-4xl font-bold">02</h4>
                                 <div class="">
-                                     <button type="submit" class="flex w-full justify-center text-white rounded-md bg-gray-800 px-4 py-2 text-sm font-medium hover:bg-gray-500" onclick="confirmFollow2()">Pilih Qoirul (No.Urut 2)</button>
+                                     <button type="submit" class="flex w-full justify-center text-white rounded-md bg-blue-800 px-4 py-2 text-sm font-medium hover:bg-blue-500" onclick="confirmFollow2()">Pilih Qoirul (No.Urut 2)</button>
                                 </div>
                             </div> 
 
                             <!-- img -->
                             <div class="h-72"> <!-- Set a fixed height for the image container -->
-                                <img class="w-full h-full object-cover" src="img/qoirul.JPG" alt="profile-picture" />
+                                <img class="w-full h-full object-cover" src="img/qoirul.png" alt="profile-picture" />
                             </div>   
 
                             <!-- Content -->
@@ -114,22 +114,20 @@
 
                         <!-- Card 3 -->
                         <div class="flex flex-col border border-gray-200 rounded-lg basis-1/3">
-                            <div class="py-2 text-center">
+                            <div class="flex flex-row justify-between p-2 text-center">
                                 <h4 class="text-4xl font-bold">03</h4>
+                                <div class="">
+                                     <button type="submit" class="flex w-full justify-center text-white rounded-md bg-blue-800 px-4 py-2 text-sm font-medium hover:bg-blue-500" onclick="confirmFollow3()">Pilih Mikaela (No.Urut 3)</button>
+                                </div>
                             </div> 
 
                             <!-- img -->
                             <div class="h-72"> <!-- Set a fixed height for the image container -->
-                                <img class="w-full h-full object-cover" src="img/mikaela.JPG" alt="profile-picture" />
+                                <img class="w-full h-full object-cover" src="img/mikaela.png" alt="profile-picture" />
                             </div>   
 
                             <!-- Content -->
                             <div class="flex flex-col p-4 rounded-lg flex-grow">
-
-                                <!-- Button -->
-                                <div class="">
-                                    <button type="submit" class="flex w-full justify-center text-white rounded-md bg-gray-800 px-4 py-2 mb-2 text-sm font-medium hover:bg-gray-500" onclick="confirmFollow3()">Pilih Mikaela (No.Urut 3)</button>
-                                </div>
 
                                 <!-- Name -->
                                 <h2 class="text-lg font-medium">
@@ -165,11 +163,14 @@
 
                             
                         </div>
-
-
                        
                     </div>                   
                 </div>
+
+                <div class="text-end">
+                    <a href="{{route('logout')}}" class="text-gray-400 text-sm font-light">Keluar</a>
+                </div>
+               
             </div>
         </div>
 
@@ -177,20 +178,18 @@
             // Candidate 1
                 function confirmFollow1() {
                     Swal.fire({
-                        title: "Apakah kamu yakin memilih Sabrina Salsa",
-                        text: "sebagai ketua osis SMPN 22 Malang Masa Bhakti 2024/2025?",
+                        title: "Apakah kamu yakin memilih Nayla Qur'ainy Regitha Amalia",
+                        text: "sebagai ketua OSIS SMPN 22 Malang Masa Bhakti 2024/2025?",
                         icon: "warning",
                         showCancelButton: true,
                         confirmButtonColor: "#3085d6",
                         cancelButtonColor: "#d33",
                         confirmButtonText: "Yakin!"
-                        }).then((result) => {
+                        }).then( async (result) => {
                         if (result.isConfirmed) {
-                            Swal.fire({
-                            title: "Berhasil!",
-                            text: "Selamat, data kamu berhasil terkirim.",
-                            icon: "success"
-                            });
+                            await fetch('{{ route('vote') }}', { method: "POST", body: JSON.stringify({ "nis": "{{ \Illuminate\Support\Facades\Auth::user()->nis }}", "candidate_id": 1 , "_token": "{{ csrf_token() }}" }), headers: { "Content-Type": "application/json" } });
+
+                            window.location = "{{ route('thanks') }}";
                         }
                     });
                     }
@@ -198,8 +197,8 @@
                 // Candidate 2
                 function confirmFollow2() {
                     Swal.fire({
-                        title: "Apakah kamu yakin memilih Sabrina Salsa",
-                        text: "sebagai ketua osis SMPN 22 Malang Masa Bhakti 2024/2025?",
+                        title: "Apakah kamu yakin memilih M. Qoirul Ulum",
+                        text: "sebagai ketua OSIS SMPN 22 Malang Masa Bhakti 2024/2025?",
                         icon: "warning",
                         showCancelButton: true,
                         confirmButtonColor: "#3085d6",
@@ -218,20 +217,18 @@
                 // Candidate 3
                 function confirmFollow3() {
                     Swal.fire({
-                        title: "Apakah kamu yakin memilih Sabrina Salsa",
-                        text: "sebagai ketua osis SMPN 22 Malang Masa Bhakti 2024/2025?",
+                        title: "Apakah kamu yakin memilih Mikaela Angely Wilson",
+                        text: "sebagai ketua OSIS SMPN 22 Malang Masa Bhakti 2024/2025?",
                         icon: "warning",
                         showCancelButton: true,
                         confirmButtonColor: "#3085d6",
                         cancelButtonColor: "#d33",
                         confirmButtonText: "Yakin!"
-                        }).then((result) => {
+                        }).then( async (result) => {
                         if (result.isConfirmed) {
-                            Swal.fire({
-                            title: "Berhasil!",
-                            text: "Selamat, data kamu berhasil terkirim.",
-                            icon: "success"
-                            });
+                            await fetch('{{ route('vote') }}', { method: "POST", body: JSON.stringify({ "nis": "{{ \Illuminate\Support\Facades\Auth::user()->nis }}", "candidate_id": 3 , "_token": "{{ csrf_token() }}" }), headers: { "Content-Type": "application/json" } });
+
+                            window.location = "{{ route('thanks') }}";
                         }
                     });
                 }

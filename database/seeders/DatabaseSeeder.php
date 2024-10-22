@@ -14,11 +14,15 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\User::create([
-            'nis' => '12387',
-            'name' => 'admin',
-            'role' => 'admin',
-            'password' => bcrypt('12345678')
-        ]);
+        \App\Models\User::create(
+            [
+                'nis' => '9124',
+                'name' => 'admin',
+                'role' => 'admin',
+                'password' => bcrypt('32985293'),
+                'password_row' => '32985293'
+            ],
+        );
+        
     }
 }
